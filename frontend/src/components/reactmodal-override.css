@@ -1,0 +1,7 @@
+/* Fuerza el modal de ReactModal a ser transparente y sin borde ni padding */
+.ReactModal__Content {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}

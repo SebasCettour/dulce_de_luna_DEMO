@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <rect width="600" height="600" rx="40" fill="#fce7f3"/>
+  <circle cx="300" cy="270" r="155" fill="#fff7ed"/>
+  <path d="M206 326c16-87 68-126 94-133 27 7 78 46 94 133-34 40-61 55-94 55s-60-15-94-55Z" fill="#c0845c"/>
+  <path d="M300 190c-9-42 12-73 51-84-1 35-20 62-51 84Z" fill="#65a36d"/>
+  <text x="300" y="470" text-anchor="middle" fill="#9d174d" font-family="sans-serif" font-size="32">Producto demo</text>
+</svg>

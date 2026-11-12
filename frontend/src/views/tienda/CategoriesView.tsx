@@ -1,10 +1,58 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCategories } from "../../hooks/useCategories";
 import { uploadUrl } from "../../api";
-import { buildFotoVariant, hasGeneratedVariants } from "../../utils/media";
 import WhatsAppBubble from "../../components/WhatsAppBubble";
 import EmptyState from "../../components/EmptyState";
 import Skeleton from "../../components/Skeleton";
+
+function categoryImageBasePath(name: string) {
+  const slug = name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+  return `/categories/${slug}`;
+}
+
+function CategoryImage({
+  name,
+  foto,
+}: {
+  name: string;
+  foto: string | null;
+}) {
+  const [sourceIndex, setSourceIndex] = useState(0);
+  const basePath = categoryImageBasePath(name);
+  const sources = [
+    `${basePath}.png`,
+    `${basePath}.jpg`,
+    `${basePath}.jpeg`,
+    `${basePath}.webp`,
+    foto ? uploadUrl(foto) : "/demo-product.svg",
+  ];
+
+  return (
+    <img
+      src={sources[sourceIndex]}
+      alt={name}
+      loading="lazy"
+      width="640"
+      height="480"
+      onError={() => {
+        setSourceIndex((index) => Math.min(index + 1, sources.length - 1));
+      }}
+      className="
+        w-full h-full object-cover
+        transition duration-500
+        group-hover:scale-105 group-hover:brightness-90
+      "
+    />
+  );
+}
 
 export default function CategoriesView() {
   const { categories, loading, error } = useCategories();
@@ -63,22 +111,7 @@ export default function CategoriesView() {
               >
                 {/* IMAGE */}
                 <div className="relative w-full aspect-[4/3] overflow-hidden">
-                  <picture>
-                    {hasGeneratedVariants(foto) && <source srcSet={buildFotoVariant(foto, "avif")} type="image/avif" />}
-                    {hasGeneratedVariants(foto) && <source srcSet={buildFotoVariant(foto, "webp")} type="image/webp" />}
-                    <img
-                      src={foto ? uploadUrl(foto) : "/default-category.jpg"}
-                      alt={nombre}
-                      loading="lazy"
-                      width="640"
-                      height="480"
-                    className="
-                      w-full h-full object-cover
-                      transition duration-500
-                      group-hover:scale-105 group-hover:brightness-90
-                    "
-                    />
-                  </picture>
+                  <CategoryImage name={nombre} foto={foto} />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 

@@ -12,7 +12,7 @@ body {
 
 .demo-banner {
   position: fixed;
-  z-index: 100001;
+  z-index: 30;
   top: 0;
   left: 0;
   right: 0;

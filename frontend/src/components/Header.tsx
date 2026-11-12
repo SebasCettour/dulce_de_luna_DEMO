@@ -74,9 +74,7 @@ export default function Header({
     0,
   );
 
-  const logoBlockClass = isScrolled
-    ? "h-28 sm:h-[150px]"
-    : "h-52 sm:h-[230px]";
+  const logoBlockClass = isScrolled ? "h-28 sm:h-[150px]" : "h-52 sm:h-[230px]";
   const navbarOffsetClass = isScrolled
     ? "top-28 sm:top-[150px]"
     : "top-52 sm:top-[230px]";
@@ -85,7 +83,7 @@ export default function Header({
     <>
       {/* ─── BANNER ─── fijo arriba del todo */}
       {!isMinimal && (
-        <div className="relative top-0 left-0 w-full z-[60] h-10 flex items-center bg-pink-700 text-white text-[13px] sm:text-sm">
+        <div className="relative top-0 left-0 w-full z-[60] h-10 flex items-center bg-green-700 text-white text-[13px] sm:text-sm">
           <Marquee speed={40} gradient={false}>
             {messages.length > 0 ? (
               messages.map((msg, i) => (
@@ -105,7 +103,7 @@ export default function Header({
         <header
           className={`
             fixed left-0 w-full z-40
-            bg-pink-50/95 border-b-2 border-pink-200 shadow-sm
+            bg-pink-green-100/95  border-b-2 border-brown-200 shadow-sm
             transition-all duration-300 ease-out
             ${visible ? "translate-y-0" : "-translate-y-full"}
             ${className}
@@ -139,16 +137,16 @@ export default function Header({
               >
                 ☰
               </button>
-              </div>
+            </div>
 
             {/* Logo */}
             <img
-              src="/demo-product.svg"
+              src="/logo.png"
               alt="Tienda natural demo"
               className={`object-contain transition-all duration-300 ${
                 isScrolled
-                ? "h-20 max-w-[170px] sm:h-20 sm:max-w-[200px]"
-                : "h-32 max-w-[260px] mt-8 sm:mt-0 sm:h-40 sm:max-w-[280px]"
+                  ? "h-24 max-w-[190px] sm:h-32 sm:max-w-[240px]"
+                  : "h-36 max-w-[280px] mt-8 sm:mt-0 sm:h-44 sm:max-w-[320px]"
               }`}
             />
 

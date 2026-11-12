@@ -59,7 +59,7 @@ export const DEMO_PREFIX = "diet-demo-v1:";
 const DATA_KEY = `${DEMO_PREFIX}data`;
 export const PLACEHOLDER = "/demo-product.svg";
 
-const categoryNames = ["Frutos secos", "Semillas", "Harinas", "Cereales", "Snacks", "Vegano", "Orgánico", "Sin TACC"];
+const categoryNames = ["Frutos secos", "Semillas", "Harinas", "Cereales", "Aceites", "Vegano", "Orgánico", "Sin TACC"];
 const productSeeds: Array<[string, number, number[]]> = [
   ["Almendras naturales", 14500, [1, 6]], ["Nueces mariposa", 13200, [1, 6]],
   ["Castañas de cajú", 17100, [1, 6]], ["Maní tostado", 6300, [1, 6]],
